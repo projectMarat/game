@@ -5,19 +5,21 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
+
+
 public class TiledMap implements Screen {
-    com.badlogic.gdx.maps.tiled.TiledMap map;
-    OrthographicCamera camera;
-    OrthogonalTiledMapRenderer mapRenderer;
+    private com.badlogic.gdx.maps.tiled.TiledMap map;
+    private OrthographicCamera camera;
+    private OrthogonalTiledMapRenderer mapRenderer;
 
     public TiledMap(){
         camera = new OrthographicCamera();
         camera.setToOrtho(false);
         camera.update();
-
         map = new TmxMapLoader().load("test2.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map);
 
