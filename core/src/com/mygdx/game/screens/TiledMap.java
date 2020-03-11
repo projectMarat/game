@@ -20,7 +20,7 @@ public class TiledMap implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false);
         camera.update();
-        map = new TmxMapLoader().load("test2.tmx");
+        map = new TmxMapLoader().load("mapGame.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map);
 
     }
