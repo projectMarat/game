@@ -1,18 +1,15 @@
 package com.mygdx.game.screens;
 
-import com.badlogic.gdx.Gdx;
+
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 
 
 public class TiledMap implements Screen {
-    private com.badlogic.gdx.maps.tiled.TiledMap map;
+    private com.badlogic.gdx.maps.tiled.TiledMap tiledMap;
     private OrthographicCamera camera;
     private OrthogonalTiledMapRenderer mapRenderer;
 
@@ -20,9 +17,9 @@ public class TiledMap implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false);
         camera.update();
-        map = new TmxMapLoader().load("mapGame.tmx");
-        mapRenderer = new OrthogonalTiledMapRenderer(map);
 
+        tiledMap = new TmxMapLoader().load("gameMap.tmx");
+        mapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
     }
     @Override
     public void render (float delta) {
@@ -57,7 +54,7 @@ public class TiledMap implements Screen {
     @Override
     public void dispose() {
         mapRenderer.dispose();
-        map.dispose();
+        tiledMap.dispose();
 
     }
 
