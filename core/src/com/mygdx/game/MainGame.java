@@ -1,12 +1,12 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
-import com.mygdx.game.screens.ActorMenu;
+import com.mygdx.game.screens.MainMenuStage;
 
 public class MainGame extends Game {
 
     @Override
     public void create() {
-        setScreen(new ActorMenu(this));
+        setScreen(new MainMenuStage(this));
     }
 }

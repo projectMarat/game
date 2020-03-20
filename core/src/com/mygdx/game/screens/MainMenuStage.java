@@ -9,12 +9,12 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.Actor.MyActor;
 import com.mygdx.game.MainGame;
 
-public class ActorMenu implements Screen {
+public class MainMenuStage implements Screen {
 
     private Stage stage;
     public MainGame game;
 
-    public ActorMenu(MainGame game) {
+    public MainMenuStage(MainGame game) {
         this.game = game;
         ScreenViewport viewport = new ScreenViewport();
         stage = new Stage(viewport);
@@ -22,6 +22,7 @@ public class ActorMenu implements Screen {
         MyActor startButton = new MyActor(new Texture("Start.png"),"startButton",this);
         MyActor exitButton = new MyActor(new Texture("end.png"),"exitButton",this);
         MyActor background = new MyActor(new Texture("sunset.png"),"background",this);
+
         stage.addActor(background);
         stage.addActor(startButton);
         stage.addActor(exitButton);
