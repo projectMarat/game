@@ -1,9 +1,11 @@
 package com.mygdx.game.Actor;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.ai.GdxAI;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.Gdx2DPixmap;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -30,8 +32,8 @@ public class MapActor extends Actor {
             addListener(new InputListener() {
                 @Override
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                    Gdx.app.log("11111111111111111","zoomin");
                     camera.zoom  -= 0.1;
+                    if(camera.zoom<0.2)camera.zoom = (float) 0.2;
                     return true;
                 }
             });
@@ -42,6 +44,7 @@ public class MapActor extends Actor {
                 @Override
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                     camera.zoom  += 0.1;
+                    if(camera.zoom>2)camera.zoom=2;
                     return true;
                 }
             });

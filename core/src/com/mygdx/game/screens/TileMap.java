@@ -26,9 +26,8 @@ public class TileMap implements Screen, GestureDetector.GestureListener {
         camera.translate(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
         camera.update();
         tiledMapStage = new TiledMapStage(camera,this);
-        tiledMap = new TmxMapLoader().load("gameMap.tmx");
+        tiledMap = new TmxMapLoader().load("untitled.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
-
 
     }
     @Override
@@ -37,7 +36,7 @@ public class TileMap implements Screen, GestureDetector.GestureListener {
         float y = Gdx.input.getDeltaY();
         Gdx.gl.glClearColor(135/255f, 206/255f, 235/255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        camera.position.add(-x, y, 0);
+        camera.position.add(-x*camera.zoom, y*camera.zoom, 0);
         camera.update();
         mapRenderer.render();
         mapRenderer.setView(camera);
