@@ -11,17 +11,23 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.mygdx.game.MainGame;
 import com.mygdx.game.screens.PauseScreen;
+import com.mygdx.game.screens.TileMap;
 import com.mygdx.game.screens.TiledMapStage;
 
 public class MapActor extends Actor {
     public OrthographicCamera camera;
     public Sprite sprite;
     public TiledMapStage tiledMapStage;
+    public TileMap tileMap;
+    public MainGame mainGame;
 
-    public MapActor(Texture texture, final String actorName, final OrthographicCamera camera, final TiledMapStage tiledMapStage){
+    public MapActor(Texture texture, final String actorName, final OrthographicCamera camera, final TiledMapStage tiledMapStage, final MainGame mainGame, final TileMap tileMap){
         this.camera = camera;
         this.tiledMapStage = tiledMapStage;
+        this.mainGame = mainGame;
+        this.tileMap = tileMap;
         int width = Gdx.graphics.getWidth();
         int height = Gdx.graphics.getHeight();
         sprite = new Sprite(texture);
@@ -54,7 +60,19 @@ public class MapActor extends Actor {
             addListener(new InputListener() {
                 @Override
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                    tiledMapStage.tileMap.game.setScreen(new PauseScreen());
+                    tiledMapStage.tileMap.mainGame.setScreen(new PauseScreen(mainGame,tileMap));
+                    return true;
+                }
+            });
+        }else if(actorName.equals("object")){
+            final float width1 = texture.getWidth()*2;
+            final float height1 = texture.getHeight()*2;
+            sprite.setSize(width1,height1);
+            sprite.setPosition(500f,500f);
+            addListener(new InputListener(){
+                @Override
+                public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                    sprite.setSize(width1/camera.zoom,height1/camera.zoom);
                     return true;
                 }
             });

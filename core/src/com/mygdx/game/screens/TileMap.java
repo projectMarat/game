@@ -18,17 +18,21 @@ public class TileMap implements Screen, GestureDetector.GestureListener {
     public OrthographicCamera camera;
     private OrthogonalTiledMapRenderer mapRenderer;
     private TiledMapStage tiledMapStage;
-    public MainGame game;
+    public MainGame mainGame;
+
     public TileMap(MainGame mainGame){
-        this.game = mainGame;
+        this.mainGame = mainGame;
         camera = new OrthographicCamera();
         camera.setToOrtho(false);
         camera.translate(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
         camera.update();
-        tiledMapStage = new TiledMapStage(camera,this);
-        tiledMap = new TmxMapLoader().load("untitled.tmx");
+        tiledMapStage = new TiledMapStage(camera,this,mainGame);
+        tiledMap = new TmxMapLoader().load("gameMap.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 
+    }
+    public void Refresh(){
+        tiledMapStage = new TiledMapStage(camera,this,mainGame);
     }
     @Override
     public void render (float delta) {

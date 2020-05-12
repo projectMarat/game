@@ -3,11 +3,16 @@ package com.mygdx.game.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.mygdx.game.MainGame;
 
 public class PauseScreen implements Screen {
-
-    public PauseScreen(){
-
+    public MainGame mainGame;
+    public TileMap tileMap;
+    private PauseScreenStage pauseScreenStage;
+    public PauseScreen(MainGame mainGame,TileMap tileMap){
+        this.mainGame = mainGame;
+        this.tileMap = tileMap;
+        pauseScreenStage = new PauseScreenStage(mainGame,tileMap);
     }
 
     @Override
@@ -17,8 +22,7 @@ public class PauseScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(135/255f, 135/255f, 135/255f, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        pauseScreenStage.render(delta);
     }
 
     @Override
@@ -43,6 +47,6 @@ public class PauseScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        pauseScreenStage.dispose();
     }
 }

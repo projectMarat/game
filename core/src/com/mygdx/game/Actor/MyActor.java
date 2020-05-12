@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.mygdx.game.screens.MainMenuStage;
 import com.mygdx.game.screens.TileMap;
+import com.mygdx.game.screens.TiledMapStage;
 
 
 public class MyActor extends Actor {
@@ -29,7 +30,8 @@ public class MyActor extends Actor {
             addListener(new InputListener() {
                 @Override
                 public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                    mainMenuStage.game.setScreen(new TileMap(mainMenuStage.game));
+                    TileMap tileMap = new TileMap(mainMenuStage.game);
+                    mainMenuStage.game.setScreen(tileMap);
                     return true;
                 }
             });

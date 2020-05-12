@@ -19,6 +19,7 @@ public class MainMenuStage implements Screen {
         ScreenViewport viewport = new ScreenViewport();
         stage = new Stage(viewport);
         Gdx.input.setInputProcessor(stage);
+
         MyActor startButton = new MyActor(new Texture("Start.png"),"startButton",this);
         MyActor exitButton = new MyActor(new Texture("end.png"),"exitButton",this);
         MyActor background = new MyActor(new Texture("sunset.png"),"background",this);
@@ -63,7 +64,6 @@ public class MainMenuStage implements Screen {
     }
 
     public void dispose() {
-
         stage.dispose();
     }
 }
